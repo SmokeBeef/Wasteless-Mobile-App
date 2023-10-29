@@ -50,7 +50,7 @@ const HomeScreen = () => {
             <Filter />
           </View>
         </View>
-        <View  style={tw`flex-row gap-8 h-[125]`}>
+        <View  style={tw`flex-row gap-8 h-[130]`}>
           <TopNavigation />
         </View>
       </ScrollView>

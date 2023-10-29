@@ -10,6 +10,9 @@ import * as Splash from "expo-splash-screen"
 import { useFonts } from "expo-font";
 import PreviewScreen from "./screen/child/PreviewScreen";
 import ArrowBack from "./components/icon/ArrowBack";
+import PeminjamanSuccessScreen from "./screen/child/PeminjamanSuccessScreen";
+import PostScreen from "./screen/PostScreen";
+import Camera from "./screen/child/CameraScreen";
 
 const Stack = createStackNavigator()
 
@@ -40,27 +43,31 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
         headerShown: false,
-          // transitionSpec: {
-          //   open: config,
-          //   close: config
-          // },
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        // transitionSpec: {
+        //   open: config,
+        //   close: config
+        // },
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 
       }} >
         <Stack.Screen name="splash" component={SplashScreen} />
         <Stack.Screen name="register" component={RegisterScreen} />
         <Stack.Screen name="main" component={BottomTabNavigation} />
-        <Stack.Screen name="detail" options={{ 
+        <Stack.Screen name="detail" options={{
           headerShown: true,
-          header: ({navigation}) => {
+          header: ({ navigation, route }) => {
             return (
-              <View style={tw`bg-white pt-[49px] pb-4 px-[26px]`}>
+              <View style={tw`bg-white pt-[49px] pb-4 px-[26px] flex-row items-center gap-[12px]`}>
                 <ArrowBack onPress={() => navigation.goBack()} />
-                <Text>{}</Text>
+                <Text numberOfLines={1} ellipsizeMode="tail" style={{ fontFamily: "PoppinsSemiBold", fontSize: 16 }}>{route.params.data.nama}</Text>
               </View>
             )
           }
-         }} component={PreviewScreen} />
+        }} component={PreviewScreen} />
+
+        <Stack.Screen name="success" options={{ cardStyleInterpolator: CardStyleInterpolators.forBottomSheetAndroid }} component={PeminjamanSuccessScreen} />
+        <Stack.Screen name="camera" options={{ cardStyleInterpolator: CardStyleInterpolators.forBottomSheetAndroid }} component={Camera} />
+     
 
       </Stack.Navigator>
     </NavigationContainer>

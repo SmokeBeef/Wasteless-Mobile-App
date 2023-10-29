@@ -8,7 +8,7 @@ const ButtonFull = ({ title, onPress }) => {
   return (
     <TouchableOpacity
       title={title}
-      style={tw`bg-[${COLORS.green}] absolute bottom-[25px] w-auto right-[25px] left-[25px] rounded-full py-4 items-center`}
+      style={tw`bg-[${COLORS.green}] absolute bottom-[25px] w-auto right-[25px] left-[25px] rounded-full py-2 items-center`}
       onPress={() => onPress()}
     >
       <Text style={{ ...style.font, color: COLORS.white }}>{title}</Text>

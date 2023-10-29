@@ -5,7 +5,14 @@ import MapScreen from "../screen/MapScreen";
 import PointScreen from "../screen/PointScreen";
 import ProfileScreen from "../screen/ProfileScreen";
 import PostScreen from "../screen/PostScreen";
-import { View, Image, Text, TouchableOpacity, StatusBar } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+  TouchableOpacityBase,
+} from "react-native";
 
 import tw from "twrnc";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -57,6 +64,7 @@ const BottomTabNavigation = () => {
           height: 90,
           paddingHorizontal: 15,
         },
+        lazy: true,
       }}
     >
       <Tab.Screen
@@ -104,6 +112,9 @@ const BottomTabNavigation = () => {
         name="Add"
         component={PostScreen}
         options={{
+          tabBarStyle: { display: "none" },
+
+          headerShown: true,
           tabBarIcon: ({ focused }) => (
             <Image
               source={require("../assets/icon/Plus.png")}
@@ -115,6 +126,23 @@ const BottomTabNavigation = () => {
             />
           ),
           tabBarButton: (props) => <CustomeTabBarButton {...props} />,
+          header: ({ navigation, route }) => {
+            return (
+              <View
+                style={tw`bg-white pt-[49px] pb-4 px-[26px] justify-between flex-row items-center gap-[12px]`}
+              >
+                <View style={tw`flex-row items-center gap-[12px]`}>
+                  <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <ArrowBack />
+                  </TouchableOpacity>
+                  <Text style={{ fontFamily: "PoppinsSemiBold", fontSize: 16 }}>
+                    Pinjamkan Barang
+                  </Text>
+                </View>
+                <Notification />
+              </View>
+            );
+          },
         }}
       />
       <Tab.Screen

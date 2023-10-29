@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.smokebeef.wasteLessNative"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,6 +31,20 @@
       "eas": {
         "projectId": "3c36eb3f-27e1-4221-84b2-d3b72d441c79"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Wasless to access your camera."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app want to access your photos."
+        }
+      ]
+    ]
   }
 }

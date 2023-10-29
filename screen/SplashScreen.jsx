@@ -7,7 +7,7 @@ import { Logo } from '../components'
 export default function SplashScreen({navigation}) {
     if(navigation){
         setTimeout(() => {
-            navigation.push("register")
+            navigation.replace("register")
         },1000)
     }
   return (

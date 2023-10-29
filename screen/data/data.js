@@ -27,7 +27,7 @@ export const data = [
         iLike: false
     },
     {
-        nama: "Meja putih",
+        nama: "Meja putih asdoamKA asDMAdoafbiaUbsfiJABfi",
         penyewa: "Diana Agnesia",
         jarak: "1.5 Km",
         rating: "4/5",

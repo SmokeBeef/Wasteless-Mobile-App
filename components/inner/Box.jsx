@@ -29,7 +29,7 @@ const Box = ({ title, user, like, rate, distance, img, iLike }) => {
         </View>
       </View>
       <Image style={style.img} source={img} />
-      <Text style={{ ...style.fontSemi, ...style.title }}>{title}</Text>
+      <Text numberOfLines={1}  style={{ ...style.fontSemi, ...style.title }}>{title}</Text>
       <Text style={{ ...style.font, ...style.user }}>{user}</Text>
       <View style={tw`justify-end items-center gap-[4px] flex-row mt-[8px]`}>
         <Text style={{ ...style.font }}>{like}</Text>
