@@ -43,8 +43,7 @@ import DeleteImg from "../components/icon/DeleteImg";
 function PostScreen({ navigation }) {
   const [image, setImage] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [hasCameraPermision, setHasCameraPermision] = useState();
-  const [hasGaleryPermision, setHasGaleryPermision] = useState();
+  const radioValue = [1,2,3,4,5]
   // const  {expand,} =useBottomSheet()
   const sheeRef = useRef(null);
 
@@ -152,6 +151,7 @@ function PostScreen({ navigation }) {
               />
             </View>
           </View>
+
         </ScrollView>
         <ButtonFull title={"Submit"} onPress={() => 0} />
       </View>
