@@ -4,12 +4,14 @@
     "slug": "wasless",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/Opening.png",
+      "resizeMode": "center",
+      "backgroundColor": "#ffffff",
+      "width":199,
+      "height":154
     },
     "assetBundlePatterns": [
       "**/*"
