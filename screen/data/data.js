@@ -6,7 +6,12 @@ export const data = [
         rating: "4/5",
         like: 10,
         img: require("../../assets/images/fn1.jpg"),
-        iLike: true
+        iLike: true,
+        waktu: "pagi",
+        maxs: 1,
+        isPinjam: false,
+        location: "Malang",
+        desc: "lorem"
     },
     {
         nama: "Sofa",
@@ -15,7 +20,12 @@ export const data = [
         rating: "4/5",
         like: 10,
         img: require("../../assets/images/fn2.jpg"),
-        iLike: false
+        iLike: false,
+        waktu: "pagi",
+        maxs: 1,
+        isPinjam: false,
+        location: "Malang",
+        desc: "lorem"
     },
     {
         nama: "Vas Bunga",
@@ -24,7 +34,12 @@ export const data = [
         rating: "4/5",
         like: 10,
         img: require("../../assets/images/fn3.jpg"),
-        iLike: false
+        iLike: false,
+        waktu: "pagi",
+        maxs: 1,
+        isPinjam: false,
+        location: "Malang",
+        desc: "lorem"
     },
     {
         nama: "Meja putih asdoamKA asDMAdoafbiaUbsfiJABfi",
@@ -33,7 +48,12 @@ export const data = [
         rating: "4/5",
         like: 10,
         img: require("../../assets/images/fn4.jpg"),
-        iLike: false
+        iLike: false,
+        waktu: "pagi",
+        maxs: 1,
+        isPinjam: false,
+        location: "Malang",
+        desc: "lorem"
     },
     
 ]

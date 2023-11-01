@@ -1,5 +1,5 @@
 import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import tw from "twrnc";
 import { Button } from "react-native";
@@ -7,9 +7,19 @@ import ButtonFull from "../../components/child/ButtonFull";
 import { COLORS, FONT_FAMILY } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
+import { data as datas } from "../data/data";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function PreviewScreen({ route, navigation }) {
+  let user;
   const data = route.params.data;
+  console.log(data);
+  useEffect(() => {
+    async function getUser() {
+      user = await JSON.parse(await AsyncStorage.getItem("data"));
+    }
+    getUser()
+  }, []);
   const image = [data.img, data.img];
   return (
     <View style={tw`flex-1 items-center  `}>
@@ -28,7 +38,7 @@ export default function PreviewScreen({ route, navigation }) {
               marginTop: 24,
             }}
           >
-            {"Diana"} meminjamkan
+            {data.penyewa} meminjamkan
           </Text>
           <Text style={{ ...style.fontMed, fontSize: 20 }}>{data.nama}</Text>
 
@@ -56,7 +66,7 @@ export default function PreviewScreen({ route, navigation }) {
               source={require("../../assets/images/profile.jpeg")}
             />
             <Text style={{ ...style.fontMed, fontSize: 12 }}>
-              Diana Agnesia
+              {data.penyewa}
             </Text>
           </View>
           <Text style={{ ...style.fontMed, fontSize: 12, marginTop: 16 }}>
@@ -85,30 +95,7 @@ export default function PreviewScreen({ route, navigation }) {
                 marginTop: 8,
               }}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-              iusto cum et similique. Corrupti, molestias? Doloribus, ratione.
-              Ratione, magnam recusandae rerum sit, aperiam id maiores quidem
-              consequatur voluptate voluptatibus blanditiis iste saepe eos sint,
-              praesentium tempora obcaecati cupiditate similique odio
-              consequuntur hic odit ullam! Aliquid quos tempore itaque
-              accusantium ullam harum assumenda ipsum, error animi voluptate
-              dicta velit recusandae quae aspernatur dolore saepe odit ipsa
-              rerum facilis nam asperiores. Optio, laudantium! Praesentium nobis
-              voluptatem impedit delectus assumenda nostrum et ab rerum omnis
-              quia quas perspiciatis odio vel, a eius neque aliquam deleniti
-              soluta iste, facilis pariatur repudiandae distinctio beatae
-              accusantium? Animi fugiat inventore iure enim distinctio hic
-              debitis perspiciatis vitae sit, maiores dolores corrupti qui rem
-              quaerat eaque alias amet quibusdam laudantium at dicta! Odio
-              aliquid voluptatem eum, qui temporibus repellendus ex! Sed
-              pariatur labore facere ex, veniam perferendis quod mollitia
-              adipisci minus dolor rerum. Sequi eveniet fugit in deserunt
-              voluptatibus corrupti mollitia molestiae harum ipsa eos aperiam
-              soluta dignissimos blanditiis, minima at voluptatem ex rerum
-              molestias fugiat quis! Eveniet facere aliquam quis. In aliquam
-              labore porro soluta, neque delectus quisquam quos? Incidunt
-              nostrum corrupti, expedita maxime tempora minus nesciunt at neque?
-              Eos accusamus suscipit dignissimos provident nemo iusto natus?
+              {data.desc}
             </Text>
           </ScrollView>
         </BottomSheetView>
@@ -116,7 +103,14 @@ export default function PreviewScreen({ route, navigation }) {
 
       <ButtonFull
         title={"Pinjam"}
-        onPress={() => navigation.replace("success")}
+        onPress={() => {
+          datas.forEach((val, index) => {
+            if (val === data) {
+              val.isPinjam = true;
+            }
+          });
+          navigation.replace("success");
+        }}
       />
     </View>
   );
@@ -133,8 +127,9 @@ const style = StyleSheet.create({
     fontFamily: FONT_FAMILY.PoppinsSemiBold,
   },
   img: {
-    resizeMode: "contain",
+    resizeMode: "cover",
     height: "65%",
+    width: "100%",
     marginTop: 0,
   },
   textGray: {

@@ -90,7 +90,7 @@ function TopNavigation() {
     >
       <Stack.Screen
         name="terdekat"
-        component={TerdekatScreen}
+        component={ TerdekatScreen}
         options={{
           tabBarLabel: ({ color }) => (
             <Text style={{ ...style.fontSemi, color: color }}>Terdekat</Text>

@@ -1,13 +1,13 @@
 {
   "expo": {
     "name": "wasteLessNative",
-    "slug": "wasteLessNative",
+    "slug": "wasless",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,14 +22,21 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.smokebeef.wasteLessNative"
+      "package": "com.smokebeef.wasteLessNative",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "3c36eb3f-27e1-4221-84b2-d3b72d441c79"
+        "projectId": "9979e5a6-e6af-45ef-b1f5-b7d430b948e3"
       }
     },
     "plugins": [
@@ -44,7 +51,14 @@
         {
           "photosPermission": "The app want to access your photos."
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow wasless to use your location."
+        }
       ]
-    ]
+    ],
+    "owner": "nanda442"
   }
 }

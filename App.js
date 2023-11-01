@@ -13,6 +13,7 @@ import ArrowBack from "./components/icon/ArrowBack";
 import PeminjamanSuccessScreen from "./screen/child/PeminjamanSuccessScreen";
 import PostScreen from "./screen/PostScreen";
 import Camera from "./screen/child/CameraScreen";
+import Map from "./screen/child/Map";
 
 const Stack = createStackNavigator()
 
@@ -66,7 +67,7 @@ export default function App() {
         }} component={PreviewScreen} />
 
         <Stack.Screen name="success" options={{ cardStyleInterpolator: CardStyleInterpolators.forBottomSheetAndroid }} component={PeminjamanSuccessScreen} />
-        <Stack.Screen name="camera" options={{ cardStyleInterpolator: CardStyleInterpolators.forBottomSheetAndroid }} component={Camera} />
+        <Stack.Screen name="map" options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }} component={Map} />
      
 
       </Stack.Navigator>

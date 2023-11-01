@@ -7,16 +7,22 @@ import {
   TextInput,
   StyleSheet,
   ScrollView,
+  Alert,
 } from "react-native";
-import React from "react";
-
+import React, { useState } from "react";
+import storage from "@react-native-async-storage/async-storage"
 import tw from "twrnc";
 import { Logo } from "../components";
 import { COLORS } from "../constants/theme";
 import ArrowBack from "../components/icon/ArrowBack";
 import ButtonFull from "../components/child/ButtonFull";
 
-export default function RegisterScreen({navigation}) {
+export default function RegisterScreen({ navigation }) {
+  const [data, setData] = useState({
+    nama: null,
+    email: null,
+    password: null,
+  });
   return (
     <View style={tw`flex-1`}>
       <ScrollView style={tw`flex-1`}>
@@ -33,6 +39,7 @@ export default function RegisterScreen({navigation}) {
         <View style={tw`mb-6`}>
           <Text style={{ ...style.font, ...style.label }}>Nama Lengkap</Text>
           <TextInput
+            onChangeText={(e) => setData({ ...data, nama: e })}
             placeholder="Nama Lengkap"
             style={{ ...style.input, ...style.font }}
           />
@@ -43,6 +50,7 @@ export default function RegisterScreen({navigation}) {
             keyboardType="email-address"
             placeholder="email"
             style={{ ...style.input, ...style.font }}
+            onChangeText={(e) => setData({ ...data, email: e })}
           />
         </View>
         <View>
@@ -51,12 +59,27 @@ export default function RegisterScreen({navigation}) {
             secureTextEntry
             placeholder="*******"
             style={{ ...style.input, ...style.font }}
+            onChangeText={(e) => setData({ ...data, password: e })}
           />
         </View>
 
-        <View style={tw`mt-20`}><Text></Text></View>
+        <View style={tw`mt-20`}>
+          <Text></Text>
+        </View>
       </ScrollView>
-      <ButtonFull title={"Daftar"} onPress={() => navigation.replace("main")} />
+      <ButtonFull
+        title={"Daftar"}
+        onPress={async() => {
+          const condition = !data.email || !data.nama || !data.password;
+          console.log(data);
+          if (condition) {
+            Alert.alert("wajib di isi semua");
+          } else {
+            await storage.setItem("data", JSON.stringify(data))
+            navigation.replace("main");
+          }
+        }}
+      />
     </View>
   );
 }
