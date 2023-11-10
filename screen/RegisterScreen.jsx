@@ -10,12 +10,13 @@ import {
   Alert,
 } from "react-native";
 import React, { useState } from "react";
-import storage from "@react-native-async-storage/async-storage"
+import storage from "@react-native-async-storage/async-storage";
 import tw from "twrnc";
 import { Logo } from "../components";
 import { COLORS } from "../constants/theme";
 import ArrowBack from "../components/icon/ArrowBack";
 import ButtonFull from "../components/child/ButtonFull";
+import { dataUser } from "./data/data";
 
 export default function RegisterScreen({ navigation }) {
   const [data, setData] = useState({
@@ -69,15 +70,30 @@ export default function RegisterScreen({ navigation }) {
       </ScrollView>
       <ButtonFull
         title={"Daftar"}
-        onPress={async() => {
+        onPress={async () => {
           const condition = !data.email || !data.nama || !data.password;
           console.log(data);
-          if (condition) {
-            Alert.alert("wajib di isi semua");
-          } else {
-            await storage.setItem("data", JSON.stringify(data))
-            navigation.replace("main");
-          }
+          // if (condition) {
+          //   Alert.alert("wajib di isi semua");
+          // } else {
+          const id = ++dataUser.length;
+          const point = Math.floor(Math.random() * 20000);
+          dataUser.push({
+            id: id,
+            nama: data.nama,
+            photo: require("../assets/images/profile.jpeg"),
+            point: point,
+          });
+          await storage.setItem(
+            "data",
+            JSON.stringify({
+              ...data,
+              id: id,
+              point: point,
+            })
+          );
+          navigation.replace("main");
+          // }
         }}
       />
     </View>

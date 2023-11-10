@@ -149,6 +149,7 @@ const BottomTabNavigation = () => {
         name="Point"
         component={PointScreen}
         options={{
+          headerShown: true,
           tabBarIcon: ({ focused }) => (
             <View style={tw`justify-center items-center`}>
               <Image
@@ -163,6 +164,23 @@ const BottomTabNavigation = () => {
               <Text style={textStyle(focused)}>Point</Text>
             </View>
           ),
+          header: ({ navigation, route }) => {
+            return (
+              <View
+                style={tw`bg-white pt-[49px] pb-4 px-[26px] justify-between flex-row items-center gap-[12px]`}
+              >
+                <View style={tw`flex-row items-center gap-[12px]`}>
+                  <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <ArrowBack />
+                  </TouchableOpacity>
+                  <Text style={{ fontFamily: "PoppinsSemiBold", fontSize: 16 }}>
+                    Point
+                  </Text>
+                </View>
+                <Notification />
+              </View>
+            );
+          },
         }}
       />
       <Tab.Screen

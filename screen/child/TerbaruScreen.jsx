@@ -8,7 +8,7 @@ import { useIsFocused } from "@react-navigation/native";
 import { useEffect } from "react";
 
 export default function TerbaruScreen() {
-  const focus = useIsFocused();
+  const focus = useIsFocused(); 
   useEffect(() => {}, [focus]);
   return (
     <ScrollView

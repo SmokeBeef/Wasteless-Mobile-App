@@ -31,7 +31,7 @@ function PostScreen({ navigation, route }) {
   const [nama, setNama] = useState("");
   const [image, setImage] = useState([]);
   const [kualitas, setKualitas] = useState();
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState();
   const [nameLocation, setNameLocation] = useState();
   const [waktuPengambilan, setWaktuPengambilan] = useState();
   const [maxDay, setMaxDay] = useState();
@@ -96,6 +96,10 @@ function PostScreen({ navigation, route }) {
       waktu: waktuPengambilan,
       location: location,
       maxs: maxDay,
+      maps: location ? {
+        latitude: location.latitude ,
+        longitude: location.longitude,
+      } : null,
       desc: desc
     };
     console.log(result);
