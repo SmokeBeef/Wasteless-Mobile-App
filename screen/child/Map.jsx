@@ -1,7 +1,7 @@
 import { View, Text, Alert, ActivityIndicator, Dimensions } from "react-native";
 import React, { useEffect, useState } from "react";
 
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
 
 import tw from "twrnc";
@@ -55,7 +55,7 @@ const Map = ({ navigation }) => {
   return (
     <View style={tw`flex-1 justify-center items-center`}>
       <MapView
-        provider="google"
+        provider={PROVIDER_GOOGLE}
         initialRegion={location}
         style={tw`-z-10 w-[${Dimensions.get("window").width}px] h-[${
           Dimensions.get("window").height

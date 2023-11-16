@@ -2,13 +2,13 @@ import { View, Text, Dimensions } from "react-native";
 import React from "react";
 import { data } from "./data/data";
 import tw from "twrnc";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 const MapScreen = () => {
   return (
     <View style={tw`flex-1 justify-center items-center`}>
       <MapView
-        provider="google"
+        provider={PROVIDER_GOOGLE}
         initialRegion={{
           latitude: -7.955769339135371,
           longitude: 112.64355405328047,

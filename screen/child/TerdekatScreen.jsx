@@ -54,7 +54,7 @@ export default function TerdekatScreen({ navigation }) {
         )}
       </View>
 
-      <View style={tw`mt-10`}></View>
+      <View style={tw`mt-10`}><Text>last</Text></View>
     </ScrollView>
   );
 }
